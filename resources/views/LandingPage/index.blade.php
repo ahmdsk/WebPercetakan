@@ -117,39 +117,43 @@
                 </div>
             </div>
         </div>
-        <div class="product-slider-three owl-carousel">
+        {{-- <div class="product-slider-three owl-carousel"> --}}
+        <div class="row">
             @forelse ($rekomendasi as $lp)
-            <div class="product-card style3">
-                <div class="product-img bg-athens">
-                    @if ($lp['gambar'] != null)
-                        <img src="{{ asset('landing/img/products/'.$lp['gambar']) }}" alt="{{$lp['product_name']}}">
-                    @else
-                        <img src="{{ asset('landing/img/products/no-images.png') }}" alt="{{$lp['product_name']}}">
-                    @endif
-                    {{-- <span class="promo-text"><i class="flaticon-star"></i>{{number_format($lp['jumlah_rating']['rating'], 1)}}</span> --}}
-                    <span class="promo-text" style="background-color: brown">Rekomendasi</span>
-                    <ul class="product-option list-style">
-                        <li><a href="{{route('produk.detail', $lp['id']) }}"><i
-                                    class="ri-eye-line"></i></a></li>
-                        <li>
-                            <form action="{{ route('cart', $lp['id']) }}" method="post">
-                                @csrf
-                                <button type="submit"><i class="ri-shopping-cart-2-line"></i></button>
-                            </form>
-                        </li>
-                    </ul>
+                <div class="col-md-4">
+                    <div class="product-card style3">
+                        <div class="product-img bg-athens">
+                            @if ($lp['gambar'] != null)
+                                <img src="{{ asset('landing/img/products/'.$lp['gambar']) }}" alt="{{$lp['product_name']}}">
+                            @else
+                                <img src="{{ asset('landing/img/products/no-images.png') }}" alt="{{$lp['product_name']}}">
+                            @endif
+                            {{-- <span class="promo-text"><i class="flaticon-star"></i>{{number_format($lp['jumlah_rating']['rating'], 1)}}</span> --}}
+                            <span class="promo-text" style="background-color: brown">Rekomendasi</span>
+                            <ul class="product-option list-style">
+                                <li><a href="{{route('produk.detail', $lp['id']) }}"><i
+                                            class="ri-eye-line"></i></a></li>
+                                <li>
+                                    <form action="{{ route('cart', $lp['id']) }}" method="post">
+                                        @csrf
+                                        <button type="submit"><i class="ri-shopping-cart-2-line"></i></button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="product-info">
+                            <h3><a href="">{{$lp['product_name']}}</a></h3>
+                            <p class="product-price">{{'Rp. '.number_format($lp['product_price'])}}</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="product-info">
-                    <h3><a href="">{{$lp['product_name']}}</a></h3>
-                    <p class="product-price">{{'Rp. '.number_format($lp['product_price'])}}</p>
-                </div>
-            </div>
             @empty
             <div class="text-center">
                 <h4>Produk belum tersedia.</h4>
             </div>  
             @endforelse
         </div>
+        {{-- </div> --}}
     </div>
 </section>
 @endif

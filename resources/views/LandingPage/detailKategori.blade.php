@@ -48,7 +48,7 @@
                                 <li><i class="flaticon-star"></i></li>
                                 @endfor
                             </ul>
-                            <h3><a href="shop-details.html">{{$p['product_name']}}</a></h3>
+                            <h3><a href="{{route('produk.detail', $p['id_product']) }}">{{$p['product_name']}}</a></h3>
                             <p class="product-price">
                                 Rp. {{number_format($p['product_price'])}}
                             </p>
